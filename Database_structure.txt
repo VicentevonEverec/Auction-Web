@@ -12,12 +12,12 @@ ALTER TABLE `user`
 ADD INDEX `idx_wallet_address` (`wallet_address`);
 
 CREATE TABLE `wallet_history` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `user_dni` VARCHAR(10) NOT NULL,
-  `wallet_address` VARCHAR(255) NOT NULL,
-  `carteraActiva` BOOLEAN NOT NULL DEFAULT TRUE,
-  CONSTRAINT `unique_wallet_history` UNIQUE (`user_dni`, `wallet_address`),
-  CONSTRAINT `fk_user_dni` FOREIGN KEY (`user_dni`) REFERENCES `user` (`dni`) ON DELETE CASCADE
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` BIGINT NOT NULL, -- Cambiamos user_dni a user_id y el tipo a BIGINT
+    `wallet_address` VARCHAR(255) NOT NULL,
+    `carteraActiva` BOOLEAN NOT NULL DEFAULT TRUE,
+    CONSTRAINT `unique_wallet_history` UNIQUE (`user_id`, `wallet_address`),
+    CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE productos (
@@ -64,8 +64,8 @@ CREATE TABLE `pujas` (
     `ID_Usuario` BIGINT,
     `Monto` DECIMAL(10, 6),
     `Fecha_Puja` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `Wallet_Address` VARCHAR(255),
+    `wallet_history_id` INT, -- Nueva columna para la clave foránea
     CONSTRAINT `fk_puja_producto` FOREIGN KEY (`ID_Producto`) REFERENCES `productos`(`ID_Producto`),
     CONSTRAINT `fk_puja_usuario` FOREIGN KEY (`ID_Usuario`) REFERENCES `user`(`id`),
-    CONSTRAINT `fk_puja_wallet` FOREIGN KEY (`Wallet_Address`) REFERENCES `wallet_history`(`wallet_address`)
+    CONSTRAINT `fk_puja_wallet_history` FOREIGN KEY (`wallet_history_id`) REFERENCES `wallet_history`(`id`)
 );
