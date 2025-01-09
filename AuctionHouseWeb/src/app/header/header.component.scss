@@ -1,0 +1,40 @@
+.header-container {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semitransparente */
+  padding: 10px; /* Reducimos el espaciado interno para un aspecto más limpio */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  position: sticky;
+  top: 0;
+
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.header-links {
+  display: flex;
+  gap: 40px; /* Reducimos el espacio entre los elementos de los enlaces */
+}
+
+.header-links a {
+  text-decoration: none;
+  color: #fff; /* Color del texto de los enlaces: blanco */
+  font-weight: bold;
+  font-size: 18px; /* Reducimos un poco el tamaño del texto */
+  padding: 8px 15px; /* Espaciado interno ajustado */
+  border-radius: 5px; /* Agregamos bordes redondeados a los enlaces */
+  transition: color 0.3s ease; /* Añadimos una transición de color suave */
+}
+
+.header-links a:hover {
+  color: #66c2ff; /* Color del texto de los enlaces al pasar el cursor sobre ellos */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente al pasar el cursor */
+}

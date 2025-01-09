@@ -1,0 +1,24 @@
+.back-card {
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-content i {
+    margin-right: 5px;
+  }
+
+  .texto {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+  }
+  

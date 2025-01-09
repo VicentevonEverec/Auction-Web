@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\Vicente\\Desktop\\TFG - Código\\Auction-Blockchain\\AuctionHouseWeb\\src\\app\\contratos\\pujas\\contracts\\Puja.sol": {
+      "lastModificationDate": 1703957680198,
+      "contentHash": "9e0d222af71bfda5c51b87b91d222393",
+      "sourceName": "contracts/Puja.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.7"
+      ],
+      "artifacts": [
+        "Puja"
+      ]
+    }
+  }
+}

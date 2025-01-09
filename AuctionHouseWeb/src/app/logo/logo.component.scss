@@ -1,0 +1,98 @@
+.logo-container {
+  width: 85px; /* Tamaño del círculo */
+  height: 85px; /* Tamaño del círculo */
+  background-color: yellow; /* Color amarillo */
+  border-radius: 50%; /* Hace que el contenedor sea un círculo */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+  position: relative;
+  top: 25%;
+}
+/* Estilos para el mazo de subasta */
+.hammer {
+  width: 20px;
+  height: 19px;
+  position: relative;
+  transform-origin: top; /* Punto de origen de la rotación en la parte superior */
+  transform: rotate(-45deg); /* Rotar el mazo a -45 grados */
+  z-index: 2;
+  left: 10px; /* Ajustar la posición para acercar el mazo al cilindro */
+  bottom: 7px;
+}
+
+.head {
+  width: 25px; /* Ancho aumentado para una cabeza más grande */
+  height: 12px; /* Altura rectangular de la cabeza del martillo */
+  background-color: #986118;
+  position: absolute;
+  top: 50%; /* Colocar la cabeza en el centro vertical del mango */
+  left: 50%; /* Colocar la cabeza en el centro horizontal del mango */
+  transform: translate(-50%, -50%); /* Ajustar para centrar la cabeza */
+  border: 2px solid #000; /* Contorno negro */
+}
+
+.handle {
+  width: 5px;
+  height: 37px;
+  background-color: #333;
+  position: absolute;
+  top: 10px; /* Ajustar la posición para acercar la cabeza al cilindro */
+  left: 7px;
+  border: 2px solid #000; /* Contorno negro */
+}
+
+/* Estilos para los cilindros */
+.cylinder-head-left,
+.cylinder-head-right {
+  width: 5px;
+  height: 17px;
+  background-color: #5c3c0f;
+  position: absolute;
+  top: 50%; /* Centrar verticalmente los cilindros en la cabeza */
+  transform: translateY(-50%); /* Ajustar para centrar los cilindros en la cabeza */
+  border: 2px solid #000; /* Contorno negro */
+}
+
+.cylinder-head-left {
+  left: -6px; /* Posicionar el cilindro izquierdo a la izquierda de la cabeza */
+}
+
+.cylinder-head-right {
+  right: -6px; /* Posicionar el cilindro derecho a la derecha de la cabeza */
+}
+
+
+
+.cylinder-container {
+  position: relative;
+  right: 26px;
+  top: 17px;
+  z-index: 1; /* Asegura que el cilindro esté sobre la base */
+}
+
+.cylinder {
+  width: 25px;
+  height: 12px; /* Altura del cilindro */
+  background-color: #986118; /* Color madera oscura */
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #000; /* Contorno negro */
+}
+
+.base {
+  width: 31px; /* Ancho de la base más grande */
+  height: 15px; /* Altura de la base más grande */
+  background-color: #5c3c0f; /* Color madera más oscura */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1; /* Asegura que la base esté detrás del cilindro */
+  border: 2px solid #000; /* Contorno negro */
+}
+
+
+
+

@@ -1,0 +1,30 @@
+<div class="page-container">
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+  
+    <div>
+        <app-back-arrow></app-back-arrow>
+    </div>
+    
+    <div class="user-profile">
+      <div class="user-card">
+        <h2>Historial de carteras</h2>
+
+        <p><strong>Cartera actual:</strong> {{ currentWallet }}</p>
+        <p *ngIf="walletsWithValues.length == 0"><strong>No existen más carteras añadidas a esta cuenta.</strong></p>
+        <p *ngIf="walletsWithValues.length > 0"><strong>Carteras añadidas a esta cuenta:</strong></p>
+            <div *ngIf="walletsWithValues.length > 0">
+                <ul>
+                    <li *ngFor="let wallet of walletsWithValues">
+                        {{ wallet.wallet }}
+                        <p><strong>Saldo actual: </strong> {{ wallet.ethereumAmount }} ETH {{ wallet.convertedAmount }} EUR</p>
+                    </li>
+                </ul>
+          </div>
+
+      </div>
+    </div>
+  
+    <app-footer></app-footer>
+</div>
+  

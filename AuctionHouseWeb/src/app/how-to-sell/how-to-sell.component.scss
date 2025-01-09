@@ -1,0 +1,48 @@
+
+  .auction-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2, h3 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  ol {
+    list-style: decimal;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  li {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .center-address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .fake-address {
+    font-size: 20px;
+    text-align: center; /* Centrar el contenido del <address> */
+  }
+  
+  .fake-address strong {
+    font-weight: bold;
+  }

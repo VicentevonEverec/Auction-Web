@@ -1,0 +1,84 @@
+.destacados1 {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center; // Alinea los elementos a la derecha
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.carousel {
+  width: 80%; // Ancho del carousel
+  display: flex;
+}
+
+.carousel-caption {
+  background-color: rgba(128, 128, 128, 0.7); // Fondo grisáceo transparente (puedes ajustar el valor alpha para la transparencia)
+  color: #fff; // Color del texto dentro del caption (puedes ajustarlo según tus necesidades)
+  position: absolute; // Posición absoluta para que se superponga a la imagen
+  bottom: 0; // Lo posiciona en la parte inferior del carousel
+  left: 0; // Lo posiciona a la izquierda del carousel
+  right: 0; // Lo posiciona a la derecha del carousel
+  padding: 10px; // Espacio interno dentro del caption (puedes ajustar el valor según tus necesidades)
+  width: 100%; // Ancho del caption (puedes ajustar el porcentaje según tus necesidades)
+  margin: 0 auto; // Centra horizontalmente el caption
+  text-align: center; // Alinea el contenido del caption al centro
+}
+
+.noticias {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.fila-noticias {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.left-new {
+  background-color: aqua;
+}
+
+.imagen-noticias {
+  width: 300px;
+}
+
+.right-new 
+{
+    background: linear-gradient(to right, #e8e8e8, #f2f2f2); /* Degradado grisáceo de izquierda a derecha */
+    padding: 10px;
+    text-align: center;
+    .news-caption 
+    {
+      h1 {
+        font-size: 24px; /* Tamaño de fuente grande para el título */
+        margin-bottom: 10px;
+      }
+  
+      h4 {
+        font-size: 18px; /* Tamaño de fuente para el subtítulo */
+        margin-bottom: 5px;
+      }
+  
+      h5 {
+        font-size: 16px; /* Tamaño de fuente para la fecha */
+        color: #888; /* Color gris para la fecha */
+      }
+    }
+}
+
+.noticia {
+  background: linear-gradient(to right, #e8e8e8, #f2f2f2);
+  border-radius: 10px; /* Para hacer los bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agregar una sombra */
+  padding: 20px;
+}
+
+.titulo-noticias {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-left: 25px;
+}

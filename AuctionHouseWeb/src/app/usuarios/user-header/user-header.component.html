@@ -1,0 +1,9 @@
+<div class="user-header-container">
+    <button *ngIf="stateService.getAccount() != ''" (click)="onProfile(stateService.getAccount())">Perfil de usuario</button>
+    <button *ngIf="stateService.getAccount() == ''" (click)="onLogin()">Iniciar sesión</button>
+    <button *ngIf="stateService.getAccount() != ''"> {{ stateService.getAccountToShow() }} </button>
+    <button *ngIf="stateService.getAccount() != ''" (click)="onLogout()">Cerrar sesión</button>
+    <button *ngIf="stateService.getAccount() == ''" (click)="onRegister()">Registrarse</button>
+    <button (click)="onHowToSell()">¿Cómo vender?</button>
+</div>
+  

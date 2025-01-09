@@ -1,0 +1,36 @@
+.user-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+    background-color:  rgba(0, 0, 0, 0.8); 
+    button 
+    {
+      background-color: transparent;
+      border: none;
+      color: #fff; /* Texto en blanco */
+      cursor: pointer;
+      margin-left: 15px;
+      transition: all 0.3s ease; /* Añadimos una transición suave */
+      
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px; /* Reducimos un poco el tamaño del texto */
+      padding: 8px 15px; /* Espaciado interno ajustado */
+      border-radius: 5px; /* Agregamos bordes redondeados a los enlaces */
+  
+      &:first-child {
+        margin-left: 0;
+      }
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente al pasar el mouse */
+        color: #66c2ff; /* Cambio de color de texto al pasar el mouse */
+      }
+  
+      &:focus {
+        outline: none; /* Quitamos el contorno al hacer clic en el botón */
+      }
+    }
+  }
+  

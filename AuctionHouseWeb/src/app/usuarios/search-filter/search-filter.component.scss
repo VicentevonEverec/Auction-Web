@@ -1,0 +1,39 @@
+/* search-bar.component.scss */
+.search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 500px;
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 48px 12px 12px; /* Ajusta el padding para dar espacio al botón */
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+      
+      &::placeholder {
+        color: #999; /* Cambia el color del texto del placeholder */
+      }
+  
+      &:focus {
+        border-color: #fbff00; /* Cambia el color del borde cuando el campo está enfocado */
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    background-color: white;
+    
+    img.lupa {
+      width: 25px;
+      height: 18px;
+    }
+  }

@@ -1,0 +1,119 @@
+<div>
+  <app-user-header></app-user-header>
+  <app-header></app-header>
+
+  <div class="main-news">
+
+    <div class="left-side">
+      <div class="news-caption">
+        <h1> Nuevas exhibiciones </h1>
+        <h4>Nuevas noticias sobre {{main_news.alt}}</h4>
+        <h5> 20 Julio - 13 Agosto Toledo</h5>
+      </div>
+
+      <button> Más información </button>
+    
+    </div>
+
+    <div class="right-side">
+      <img [src]="main_news.image" alt="image news">
+    </div>
+  </div>  
+
+  <div class="destacados1">
+    <!-- Carrusel de imágenes en formato horizontal -->
+
+    <carousel [isAnimated]="true" [itemsPerSlide]="itemsPerSlide"
+    [singleSlideOffset]="singleSlideOffset"
+    [interval]="10000"
+    [startFromIndex]="1" class="carousel">
+
+      <slide *ngFor="let slide of slides">
+        <img [src]="slide.image" alt="image slide" style="display: inline-block; width: 100%;" class="articulos">
+        
+        <div class="carousel-caption">
+          <h4>Nombre de producto {{slide.alt}}</h4>
+        </div>
+
+      </slide>
+
+    </carousel>
+
+  </div>
+
+  <div class="noticias" id="noticias-section">
+
+    <h1 class="titulo-noticias"> Últimas noticias </h1>
+
+    <div class="fila-noticias">
+      <div class="noticia">
+      <div class="left-new">
+        <img [src]="noticia1.image" alt="image news" class="imagen-noticias">
+      </div>
+      <div class="right-new">
+        <div class="news-caption">
+          <h1> Nuevas exhibiciones </h1>
+          <h4>Nuevas noticias sobre {{noticia1.alt}}</h4>
+          <h5> 20 Julio - 13 Agosto Toledo</h5>
+        </div>
+
+        <button> Más información </button>
+      </div>
+    </div>
+
+    <div class="noticia">
+      <div class="left-new">
+        <img [src]="noticia2.image" alt="image news" class="imagen-noticias">
+      </div>
+      <div class="right-new">
+        <div class="news-caption">
+          <h1> Nuevas exhibiciones </h1>
+          <h4>Nuevas noticias sobre {{noticia2.alt}}</h4>
+          <h5> 20 Julio - 13 Agosto Toledo</h5>
+        </div>
+
+        <button> Más información </button>
+      
+      </div>
+    </div>
+
+    <div class="noticia">
+      <div class="left-new">
+        <img [src]="noticia3.image" alt="image news" class="imagen-noticias">
+      </div>
+      <div class="right-new">
+        <div class="news-caption">
+          <h1> Nuevas exhibiciones </h1>
+          <h4>Nuevas noticias sobre {{noticia3.alt}}</h4>
+          <h5> 20 Julio - 13 Agosto Toledo</h5>
+        </div>
+
+        <button> Más información </button>
+      
+      </div>
+    </div>
+
+    <div class="noticia">
+      <div class="left-new">
+        <img [src]="noticia4.image" alt="image news" class="imagen-noticias">
+      </div>
+      <div class="right-new">
+        <div class="news-caption">
+          <h1> Nuevas exhibiciones </h1>
+          <h4>Nuevas noticias sobre {{noticia4.alt}}</h4>
+          <h5> 20 Julio - 13 Agosto Toledo</h5>
+        </div>
+
+        <button> Más información </button>
+      
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</div>
+
+

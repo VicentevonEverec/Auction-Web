@@ -1,0 +1,35 @@
+<div class="page-container">
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+  
+    <div>
+        <app-back-arrow></app-back-arrow>
+    </div>
+
+    <div class="user-profile">
+        <div class="user-card">
+          <h2>¿Qué cartera quieres establecer como la principal de tu cuenta?</h2>
+  
+          <strong>Carteras disponibles para seleccionar:</strong>
+          <div *ngIf="walletsWithValues !== null && walletsWithValues.length > 0; else noWalletsMessage">
+              <ul>
+                  <li *ngFor="let wallet of walletsWithValues" class="carteras">
+                      {{ wallet.wallet }}
+                      <button class="change-button" (click)="changeWallet(wallet.wallet);">Cambiar</button>
+                      <p><strong>Saldo actual: </strong> {{ wallet.ethereumAmount }} ETH {{ wallet.convertedAmount }} EUR</p>
+                  </li>
+              </ul>
+          </div>
+  
+          <ng-template #noWalletsMessage>
+              <p>No hay carteras disponibles para realizar el cambio en este momento.</p>
+              <p>Por favor, añade más si quieres cambiar.</p>
+          </ng-template>
+  
+  
+        </div>
+      </div>
+  
+    <app-footer></app-footer>
+</div>
+  

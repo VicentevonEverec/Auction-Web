@@ -1,0 +1,8 @@
+Front - ng serve
+
+Back - Desde IntelliJ o mvn run
+
+Contrados - en AuctionHouseWeb\src\app\contratos\pujas
+
+npx hardhat compile
+npx hardhat run scripts/deploy.js --network ropsten

@@ -1,0 +1,68 @@
+<div class="content">
+
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+
+    <div>
+        <app-back-arrow></app-back-arrow>
+    </div>
+
+    <div class="page-container">
+        <div class="product-details">
+            <div class="product-card">
+                <p class="temporizador"><strong>Tiempo restante </strong>
+                <br>
+                    <span [ngClass]="{'red-text': tiempoRestante === 'La subasta ha finalizado'}">
+                    {{ tiempoRestante }}</span></p>
+                <h2>{{ producto.nombre }}</h2>
+                <br>
+                <div class="product-info">
+                    <div class="imagen-container">
+                    <img class="imagen" [src]="producto.imagenProducto" alt="Imagen del Producto" />
+                </div>
+                <div class="product-data">
+                    <p><strong>Descripción:</strong> <br> {{ producto.descripcion }}</p>
+                    <p><strong>Estado:</strong> {{ producto.estado }}</p>
+                    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+                    <p><strong>Precio Inicial:</strong> <br> {{ producto.precioEthInicial.toFixed(5) }} ETH - {{ producto.precioInicial }} EUR</p>
+                    <p><strong>Precio Actual:</strong> <br>  {{ producto.precioEthActual.toFixed(5) }} ETH - {{ producto.precioActual }} EUR</p>
+                    <p><strong>Fecha Inicio Subasta:</strong> <br> {{ producto.fechaInicioSubasta }}</p>
+                    <p><strong>Fecha Final Subasta:</strong> <br> {{ producto.fechaFinalSubasta }}</p>
+                    <p><strong>Última puja realizada:</strong> <br> {{ producto.ultimaPuja }}</p>
+                    <p><strong>Estado puja:</strong> <br>
+                     <span [ngClass]="{'green-text': producto.estadoSubasta === 'En Subasta',
+                        'red-text': producto.estadoSubasta === 'Finalizado',
+                        'blue-text': producto.estadoSubasta === 'Proximamente'}">
+                        {{ producto.estadoSubasta }}
+                     </span>
+                    </p>
+                </div>
+                <div class="posicion-botones" *ngIf="fondosSuficientes && tiempoRestante != 'La subasta ha finalizado'; else noFondos">
+                    <button class="pujar" (click)="pujarConCantidadMinima()">Pujar con cantidad mínima</button>
+                  
+                    <!-- Formulario para pujar con una cantidad específica -->
+                    <form (ngSubmit)="pujarConCantidadEspecifica(numeroUsuario)">
+                        <input type="number" [(ngModel)]="numeroUsuario" name="cantidad" class="cantidad-input" step="0.0001">
+                      <button class="pujar" type="submit">Pujar</button>
+                    </form>
+                  </div>
+                <div class="mensajesEstado">
+                    <ng-template #noFondos>
+                        <ng-container *ngIf="producto.estadoSubasta === 'Finalizado'">
+                            <p style="color: red; font-weight: bold;">La subasta ha finalizado</p>
+                        </ng-container>
+                        <ng-container *ngIf="producto.estadoSubasta === 'Proximamente'">
+                            <p style="color: blue; font-weight: bold;">La subasta se realizará próximamente</p>
+                        </ng-container>
+                        <ng-container *ngIf="!fondosSuficientes">
+                            <p style="color: red; font-weight: bold;">No tienes fondos suficientes para pujar</p>
+                        </ng-container>
+                    </ng-template>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

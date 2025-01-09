@@ -1,0 +1,71 @@
+CREATE TABLE `user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `dni` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `surname` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `wallet_address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`,`dni`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE `user`
+ADD INDEX `idx_wallet_address` (`wallet_address`);
+
+CREATE TABLE `wallet_history` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `user_dni` VARCHAR(10) NOT NULL,
+  `wallet_address` VARCHAR(255) NOT NULL,
+  `carteraActiva` BOOLEAN NOT NULL DEFAULT TRUE,
+  CONSTRAINT `unique_wallet_history` UNIQUE (`user_dni`, `wallet_address`),
+  CONSTRAINT `fk_user_dni` FOREIGN KEY (`user_dni`) REFERENCES `user` (`dni`) ON DELETE CASCADE
+);
+
+CREATE TABLE productos (
+    ID_Producto BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(255) NOT NULL,
+    Descripcion TEXT,
+    Estado VARCHAR(50),
+    Categoria VARCHAR(100),
+    Precio_Inicial DECIMAL(10, 2),
+    Precio_Actual DECIMAL(10, 2),
+    Fecha_Inicio_Subasta TIMESTAMP;
+    Fecha_Final_Subasta TIMESTAMP;
+    ID_Vendedor BIGINT,
+    ID_Comprador BIGINT,
+    Estado_Subasta VARCHAR(50),
+    Imagen_Producto VARCHAR(255)
+);
+
+ALTER TABLE productos
+ADD COLUMN Ultima_Puja TIMESTAMP;
+
+INSERT INTO productos (Nombre, Descripcion, Estado, Categoria, Precio_Inicial, Precio_Actual, Fecha_Inicio_Subasta, Fecha_Final_Subasta, Estado_Subasta, Imagen_Producto)
+VALUES
+    ('Reloj de Lujo', 'Reloj de oro con incrustaciones de diamantes', 'Nuevo', 'Joyas', 5000.00, 5200.00, '2023-12-01', '2023-12-15', 'En Subasta', 'reloj_lujo.jpg'),
+    ('Pintura Abstracta', 'Obra de arte moderna en acrílico', 'Usado', 'Arte', 1500.00, 1500.00, '2023-12-05', '2023-12-20', 'Finalizado', 'pintura_abstracta.jpg'),
+    ('Portátil Gaming', 'Ordenador portátil potente para juegos', 'Nuevo', 'Tecnología', 1200.00, 1200.00, '2023-12-08', '2023-12-18', 'En Subasta', 'portatil_gaming.jpg'),
+    ('Bicicleta de Montaña', 'Bicicleta todo terreno de alta gama', 'Usado', 'Deportes', 800.00, 810.00, '2023-12-10', '2023-12-25', 'Finalizado', 'bicicleta_montana.jpg'),
+    ('Teléfono Inteligente', 'Último modelo de teléfono con cámara de alta resolución', 'Nuevo', 'Tecnología', 900.00, 900.00, '2023-12-12', '2023-12-22', 'En Subasta', 'telefono_inteligente.jpg'),
+    ('Anillo de Diamantes', 'Anillo de compromiso con diamante central', 'Nuevo', 'Joyas', 3000.00, 3100.00, '2023-12-03', '2023-12-17', 'En Subasta', 'anillo_diamantes.jpg'),
+    ('Sofá de Cuero', 'Sofá de tres plazas de alta calidad', 'Nuevo', 'Hogar', 2000.00, 2000.00, '2023-12-06', '2023-12-21', 'En Subasta', 'sofa_cuero.jpg'),
+    ('Cámara DSLR', 'Cámara réflex digital de alto rendimiento', 'Usado', 'Tecnología', 700.00, 710.00, '2023-12-09', '2023-12-24', 'Finalizado', 'camara_dslr.jpg'),
+    ('Collar de Perlas', 'Collar elegante con perlas naturales', 'Nuevo', 'Joyas', 1200.00, 1200.00, '2023-12-14', '2023-12-28', 'En Subasta', 'collar_perlas.jpg'),
+    ('Libro Antiguo', 'Edición especial de libro clásico', 'Usado', 'Libros', 400.00, 400.00, '2023-12-16', '2023-12-30', 'Finalizado', 'libro_antiguo.jpg'),
+    ('Telescopio Astronómico', 'Telescopio potente para observación astronómica', 'Nuevo', 'Hobbies', 1500.00, 1520.00, '2023-12-19', '2023-12-31', 'En Subasta', 'telescopio_astronomico.jpg'),
+    ('Set de Herramientas', 'Kit completo de herramientas para bricolaje', 'Nuevo', 'Herramientas', 300.00, 300.00, '2023-12-21', '2023-12-26', 'En Subasta', 'set_herramientas.jpg'),
+    ('Impresora 3D', 'Impresora de tres dimensiones para prototipos', 'Nuevo', 'Tecnología', 800.00, 810.00, '2023-12-24', '2024-01-03', 'En Subasta', 'impresora_3d.jpg'),
+    ('Lámpara Vintage', 'Lámpara de diseño retro con estilo vintage', 'Usado', 'Hogar', 350.00, 350.00, '2023-12-26', '2024-01-05', 'Finalizado', 'lampara_vintage.jpg'),
+    ('Maleta de Viaje', 'Maleta resistente y espaciosa para viajes', 'Nuevo', 'Viajes', 200.00, 200.00, '2023-12-28', '2024-01-08', 'En Subasta', 'maleta_viaje.jpg'),
+    ('Botella de Vino Antiguo', 'Botella de vino con añada especial', 'Usado', 'Alimentos y Bebidas', 1000.00, 1020.00, '2023-12-30', '2024-01-10', 'En Subasta', 'vino_antiguo.jpg');
+
+CREATE TABLE `pujas` (
+    `ID_Puja` BIGINT AUTO_INCREMENT PRIMARY KEY,
+    `ID_Producto` BIGINT,
+    `ID_Usuario` BIGINT,
+    `Monto` DECIMAL(10, 6),
+    `Fecha_Puja` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `Wallet_Address` VARCHAR(255),
+    CONSTRAINT `fk_puja_producto` FOREIGN KEY (`ID_Producto`) REFERENCES `productos`(`ID_Producto`),
+    CONSTRAINT `fk_puja_usuario` FOREIGN KEY (`ID_Usuario`) REFERENCES `user`(`id`),
+    CONSTRAINT `fk_puja_wallet` FOREIGN KEY (`Wallet_Address`) REFERENCES `wallet_history`(`wallet_address`)
+);

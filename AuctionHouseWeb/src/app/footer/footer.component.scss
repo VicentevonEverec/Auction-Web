@@ -1,0 +1,47 @@
+/* footer.component.css */
+footer {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semitransparente */
+  padding: 20px; /* Reducimos el espaciado interno para un aspecto más limpio */
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media a {
+  margin: 0 30px; /* Reducimos el espaciado horizontal entre las imágenes */
+}
+
+.social-media img {
+  width: 40px; /* Ajustamos el tamaño de las imágenes para que sean más discretas */
+  height: 40px;
+  border-radius: 50%; /* Agregamos bordes redondeados a las imágenes */
+  transition: transform 0.3s ease; /* Añadimos una transición suave en la escala */
+}
+
+.social-media img:hover {
+  transform: scale(1.2); /* Hacemos que las imágenes se agranden al pasar el cursor */
+}
+
+.contact-info {
+  margin-top: 15px; /* Aumentamos el margen superior para una mejor separación */
+}
+
+.contact-info p {
+  font-size: 16px; /* Aumentamos el tamaño de fuente para el texto de derechos reservados */
+  color: #fff; /* Color blanco para el texto */
+  text-align: center; /* Centramos el texto en el footer */
+  margin: 0; /* Eliminamos márgenes del párrafo */
+}
+
+/* Agregamos estilos adicionales si es necesario */
+.contact-info a {
+  color: #66c2ff; /* Color azul para los enlaces de contacto si los hay */
+  text-decoration: none; /* Eliminamos subrayado de los enlaces */
+  transition: color 0.3s ease; /* Añadimos una transición de color suave */
+}
+
+.contact-info a:hover {
+  color: #fff; /* Color blanco al pasar el cursor sobre los enlaces de contacto */
+}

@@ -1,0 +1,33 @@
+<div class="page-container">
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+  
+    <div>
+        <app-back-arrow></app-back-arrow>
+    </div>
+
+    <div class="user-profile">
+      <div class="user-card">
+        <h2>¿Qué cartera quieres eliminar de tu cuenta?</h2>
+
+        <strong>Carteras disponibles para borrar:</strong>
+        <div *ngIf="walletHistory !== null && walletHistory.length > 0; else noWalletsMessage">
+            <ul>
+                <li *ngFor="let wallet of walletHistory" class="carteras">
+                    {{ wallet }}
+                    <button class="delete-button" (click)="fillDeleteWalletInfo(wallet); deleteWallet()">Eliminar</button>
+                </li>
+            </ul>
+        </div>
+
+        <ng-template #noWalletsMessage>
+            <p>No hay carteras disponibles para borrar en este momento.</p>
+        </ng-template>
+
+
+      </div>
+    </div>
+  
+    <app-footer></app-footer>
+</div>
+  

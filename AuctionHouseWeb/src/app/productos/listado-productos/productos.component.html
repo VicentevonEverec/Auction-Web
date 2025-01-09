@@ -1,0 +1,40 @@
+<div class="page-container">
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+  
+    <div>
+        <app-back-arrow></app-back-arrow>
+    </div>
+
+    <div class="page-container">
+        <div class="product-list">
+
+            <div class="container">
+                <h2 class="titulo">Catálogo de productos</h2>
+                <p class="disponibles">Total de productos disponibles: {{ listaProductos.length }}</p>
+            </div>
+
+            <div *ngFor="let producto of listaProductos" class="product-card" (click)="obtenerDetallesProducto(producto.id)">
+                <img class="imagen" [src]="producto.imagenProducto" alt="Imagen del Producto" />
+                <div class="product-info">
+                <h2>{{ producto.nombre }}</h2>
+                <p><strong>Precio Inicial:</strong>  {{ producto.precioInicial }} EUR</p>
+                <p><strong>Precio Actual:</strong> {{ producto.precioActual }} EUR</p>
+                <p><strong>Fecha Inicio Subasta:</strong> {{ producto.fechaInicioSubasta }}</p>
+                <p><strong>Fecha Final Subasta:</strong> {{ producto.fechaFinalSubasta }}</p>
+                <p><strong>Estado:</strong> {{ producto.estado }}</p>
+                <p><strong>Estado subasta:</strong>
+                    <span [ngClass]="{'green-text': producto.estadoSubasta === 'En Subasta',
+                    'red-text': producto.estadoSubasta === 'Finalizado',
+                    'blue-text': producto.estadoSubasta === 'Proximamente'}">
+                    {{ producto.estadoSubasta }}
+                    </span>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <app-footer></app-footer>
+</div>
+  

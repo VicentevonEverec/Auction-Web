@@ -1,0 +1,33 @@
+<div class="page-container">
+    <app-user-header></app-user-header>
+    <app-header></app-header>
+  
+    <div>
+      <app-back-arrow></app-back-arrow>
+    </div>
+
+    <div class="user-profile">
+      <div class="user-card">
+            <h2> Añadir cartera </h2>
+    
+            <form (submit)="addWallet()">
+          
+              <div class="form-group">
+                <label for="wallet"><strong> Billetera ETH: </strong></label>
+                <input type="text" id="wallet" name="wallet" [(ngModel)]="addWalletInfo.walletAddress" required>
+                <br>
+                <button type="button" (click)="autofillWallet()">Autorellenar Billetera</button>
+              </div>
+              
+              <br>
+              <br>
+              <button type="submit" id="submitButton">
+                Añadir cartera
+              </button>
+            </form>
+      </div>
+    </div>
+  
+    <app-footer></app-footer>
+</div>
+  
