@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProductosApplication<productos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "auction.blockchain.productos.ProductosApplication",
+            "projectName": "productos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53068 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=productos"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PujasApplication<pujas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "auction.blockchain.pujas.PujasApplication",
+            "projectName": "pujas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

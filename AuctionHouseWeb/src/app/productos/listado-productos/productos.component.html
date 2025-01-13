@@ -15,21 +15,22 @@
             </div>
 
             <div *ngFor="let producto of listaProductos" class="product-card" (click)="obtenerDetallesProducto(producto.id)">
-                <img class="imagen" [src]="producto.imagenProducto" alt="Imagen del Producto" />
+                <!-- Cambié la ruta de la imagen a 'assets/Imagenes' -->
+                <img class="imagen" [src]="'assets/Imagenes/' + producto.imagenProducto" alt="Imagen del Producto" />
                 <div class="product-info">
-                <h2>{{ producto.nombre }}</h2>
-                <p><strong>Precio Inicial:</strong>  {{ producto.precioInicial }} EUR</p>
-                <p><strong>Precio Actual:</strong> {{ producto.precioActual }} EUR</p>
-                <p><strong>Fecha Inicio Subasta:</strong> {{ producto.fechaInicioSubasta }}</p>
-                <p><strong>Fecha Final Subasta:</strong> {{ producto.fechaFinalSubasta }}</p>
-                <p><strong>Estado:</strong> {{ producto.estado }}</p>
-                <p><strong>Estado subasta:</strong>
-                    <span [ngClass]="{'green-text': producto.estadoSubasta === 'En Subasta',
-                    'red-text': producto.estadoSubasta === 'Finalizado',
-                    'blue-text': producto.estadoSubasta === 'Proximamente'}">
-                    {{ producto.estadoSubasta }}
-                    </span>
-                </p>
+                    <h2>{{ producto.nombre }}</h2>
+                    <p><strong>Precio Inicial:</strong>  {{ producto.precioInicial }} EUR</p>
+                    <p><strong>Precio Actual:</strong> {{ producto.precioActual }} EUR</p>
+                    <p><strong>Fecha Inicio Subasta:</strong> {{ producto.fechaInicioSubasta }}</p>
+                    <p><strong>Fecha Final Subasta:</strong> {{ producto.fechaFinalSubasta }}</p>
+                    <p><strong>Estado:</strong> {{ producto.estado }}</p>
+                    <p><strong>Estado subasta:</strong>
+                        <span [ngClass]="{'green-text': producto.estadoSubasta === 'En Subasta',
+                        'red-text': producto.estadoSubasta === 'Finalizado',
+                        'blue-text': producto.estadoSubasta === 'Proximamente'}">
+                        {{ producto.estadoSubasta }}
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -37,4 +38,3 @@
 
   <app-footer></app-footer>
 </div>
-  
