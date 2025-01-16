@@ -29,19 +29,22 @@
           </div>
 
           <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="userData.password">
+          </div>
+
+          <div class="form-group">
             <label for="dni">DNI: </label>
             <input type="text" id="dni" name="dni" [(ngModel)]="userData.dni" required>
-
-            <label for="fileInput">Subir una foto del DNI:</label>
-            <input type="file" id="fileInput" name="documento" accept=".pdf,.doc,.docx,.txt">
           </div>
       
           <div class="form-group">
             <label for="wallet">Billetera ETH:</label>
-            <input type="text" id="wallet" name="wallet" [(ngModel)]="userData.walletAddress" required [disabled]="!isAutofillEnabled">
+            <input type="text" id="wallet" name="wallet" [(ngModel)]="userData.walletAddress" [disabled]="!isAutofillEnabled">
             <br>
             <button type="button" (click)="autofillWallet()">Autorellenar Billetera</button>
           </div>
+          
           
           <br>
           <br>

@@ -1,6 +1,8 @@
 package auction.blockchain.serviceimpl;
 
+import auction.blockchain.dto.LoginDto;
 import auction.blockchain.entities.User;
+import auction.blockchain.repositories.UserDao;
 import auction.blockchain.service.IDatabaseService;
 import auction.blockchain.service.IUserService;
 import auction.blockchain.service.IWalletHistoryService;
@@ -22,6 +24,9 @@ public class DatabaseServiceImpl implements IDatabaseService {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public String checkDatabaseConnection() {
@@ -62,7 +67,7 @@ public class DatabaseServiceImpl implements IDatabaseService {
             return false;
         }
     }
-
+  
     @Override
     public boolean checkWalletAddress(String walletAddress)
     {
@@ -188,5 +193,9 @@ public class DatabaseServiceImpl implements IDatabaseService {
             return "Error al eliminar el historial de carteras";
         }
     }
+
+ 
+
+    
 }
 

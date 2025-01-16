@@ -44,7 +44,7 @@ public class WalletController
             }
 
             // Obtenemos el usuario y devolvemos su cartera actual
-            User usuario = userService.encontrarUsuarioPorDni(dni);
+            User usuario = userService.findByDni(dni);
 
             return ResponseEntity.ok(usuario.getWalletAddress()); // Código 200 para OK
         } else {

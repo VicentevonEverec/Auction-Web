@@ -1,8 +1,8 @@
 package auction.blockchain.service;
 
-import auction.blockchain.entities.User;
-
 import java.util.List;
+
+import auction.blockchain.entities.User;
 
 public interface IDatabaseService {
 
@@ -26,4 +26,6 @@ public interface IDatabaseService {
     public String changeCurrentWallet(String currentWalletAddress, String newWalletAddress, String dni);
 
     public String reinsertWalletHistory(String walletAddress, String dni);
+
+    
 }

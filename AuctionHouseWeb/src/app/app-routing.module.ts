@@ -14,7 +14,7 @@ import { ChangeWalletComponent } from './usuarios/change-wallet/change-wallet.co
 import { SubastasComponent } from './subastas/subastas.component';
 import { ProductosComponent } from './productos/listado-productos/productos.component';
 import { DetallesProductoComponent } from './productos/detalles-producto/detalles-producto/detalles-producto.component';
-
+import  { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'change-wallet', component: ChangeWalletComponent },
   { path: 'subastas', component: SubastasComponent },
   { path: 'catalogo-productos', component: ProductosComponent },
-  { path: 'detalles-producto/:id', component: DetallesProductoComponent }
+  { path: 'detalles-producto/:id', component: DetallesProductoComponent },
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

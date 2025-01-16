@@ -31,6 +31,7 @@ import { BackArrowComponent } from 'src/componentes/back-arrow/back-arrow';
 import { SubastasComponent } from './subastas/subastas.component';
 import { ProductosComponent } from './productos/listado-productos/productos.component';
 import { DetallesProductoComponent } from './productos/detalles-producto/detalles-producto/detalles-producto.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DetallesProductoComponent } from './productos/detalles-producto/detalle
     BackArrowComponent,
     SubastasComponent,
     ProductosComponent,
-    DetallesProductoComponent
+    DetallesProductoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
