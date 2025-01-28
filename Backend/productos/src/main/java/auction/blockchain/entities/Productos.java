@@ -2,14 +2,9 @@ package auction.blockchain.entities;
 
 import lombok.Data;
 
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "productos")
