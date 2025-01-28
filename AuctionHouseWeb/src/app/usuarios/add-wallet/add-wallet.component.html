@@ -11,16 +11,7 @@
             <h2> Añadir cartera </h2>
     
             <form (submit)="addWallet()">
-          
-              <div class="form-group">
-                <label for="wallet"><strong> Billetera ETH: </strong></label>
-                <input type="text" id="wallet" name="wallet" [(ngModel)]="addWalletInfo.walletAddress" >
-                <br>
-                <button type="button" (click)="autofillWallet()">Autorellenar Billetera</button>
-              </div>
-              
-              <br>
-              <br>
+    
               <button type="submit" id="submitButton">
                 Añadir cartera
               </button>

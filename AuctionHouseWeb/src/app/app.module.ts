@@ -32,6 +32,7 @@ import { SubastasComponent } from './subastas/subastas.component';
 import { ProductosComponent } from './productos/listado-productos/productos.component';
 import { DetallesProductoComponent } from './productos/detalles-producto/detalles-producto/detalles-producto.component';
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LoginComponent } from './login/login.component';
     SubastasComponent,
     ProductosComponent,
     DetallesProductoComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

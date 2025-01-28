@@ -1,0 +1,21 @@
+<div class="cart-container">
+    <h2>Carrito de Compras</h2>
+  
+    <div *ngIf="carrito.length > 0; else carritoVacio">
+      <div *ngFor="let producto of carrito; let i = index" class="cart-item">
+        <img [src]="'assets/Imagenes/' + producto.imagenProducto" alt="Imagen del Producto" />
+        <div class="cart-info">
+          <h3>{{ producto.nombre }}</h3>
+          <p><strong>Precio:</strong> {{ producto.precioInicial }} EUR</p>
+          <p><strong>Cantidad:</strong> 1</p>
+          <button (click)="eliminarDelCarrito(i)">Eliminar</button>
+        </div>
+      </div>
+      <button class="btn btn-primary">Proceder al Pago</button>
+    </div>
+  
+    <ng-template #carritoVacio>
+      <p>El carrito está vacío.</p>
+    </ng-template>
+  </div>
+  

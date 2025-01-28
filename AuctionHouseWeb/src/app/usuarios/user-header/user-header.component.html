@@ -4,6 +4,7 @@
     <button *ngIf="stateService.getAccount() != ''"> {{ stateService.getAccountToShow() }} </button>
     <button *ngIf="stateService.getAccount() != ''" (click)="onLogout()">Cerrar sesión</button>
     <button *ngIf="stateService.getAccount() == ''" (click)="onRegister()">Registrarse</button>
+    <button (click)="onCart()">Carrito</button>
     <button (click)="onHowToSell()">¿Cómo vender?</button>
 </div>
   

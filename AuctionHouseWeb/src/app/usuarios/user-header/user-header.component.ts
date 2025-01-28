@@ -29,6 +29,10 @@ export class UserHeaderComponent {
     this.router.navigate(['/register']);
   }
 
+  onCart(): void {
+    this.router.navigate(['/cart']);
+  }
+
   onHowToSell(): void {
     this.router.navigate(['/how-to-sell']);
   }

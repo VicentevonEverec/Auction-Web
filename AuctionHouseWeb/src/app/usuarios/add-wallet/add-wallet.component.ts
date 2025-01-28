@@ -45,14 +45,4 @@ export class AddWalletComponent {
   }
 
   isAutofillEnabled: boolean = false;
-
-  async autofillWallet() 
-  {
-    this.isAutofillEnabled = true;
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const account =  await provider.send("eth_requestAccounts", []);
-    this.addWalletInfo.walletAddress = account[0];
-    this.isAutofillEnabled = false;
-  }
-
 }

@@ -43,7 +43,7 @@ export class LoginComponent {
           this.successMessage = 'Inicio de sesión exitoso.';
           this.errorMessage = '';
           console.log('Respuesta del servidor:', response);
-          this.+-(response);// y aqui tengo que poner la cartera que se ha logeado
+          this.verifyWalletInDatabase(response); // y aqui tengo que poner la cartera que se ha logeado
           // Realizar acciones adicionales, como redirigir al usuario
         },
         error: (error) => {

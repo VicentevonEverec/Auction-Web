@@ -176,4 +176,16 @@ export class StateService
   {
     return this.userData;
   }
+  private carrito: any[] = [];
+
+agregarProducto(producto: any): void {//any no es buena practica
+  this.carrito.push(producto);
+}
+
+obtenerCarrito(): any[] {
+  return this.carrito;
+}
+eliminarProducto(index: number): void {
+  this.carrito.splice(index, 1);
+}
 }

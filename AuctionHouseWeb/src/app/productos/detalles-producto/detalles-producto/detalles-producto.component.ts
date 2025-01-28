@@ -22,7 +22,6 @@ export class DetallesProductoComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: ActivatedRoute, protected stateService : StateService) { }
 
-  ethereumPrice = this.stateService.getEthereumPrice();
   recargaCache = this.stateService.getCacheRecargas();
   cacheDuration = 60000; // Duración de la caché en milisegundos (aquí, 1 minuto)
   convertedAmount = this.stateService.getFondosActuales();
@@ -36,8 +35,8 @@ export class DetallesProductoComponent implements OnInit {
 
   getEthereumPrice(): void {
     // Verifica si el precio está en caché y si el tiempo transcurrido desde la última solicitud es menor que el límite de la caché
-    if (this.ethereumPrice !== null && this.recargaCache !== 0 && Date.now() - this.recargaCache < this.cacheDuration) {
-      console.log('Precio de Ethereum obtenido de la caché:', this.ethereumPrice);
+    if ( this.recargaCache !== 0 && Date.now() - this.recargaCache < this.cacheDuration) {
+     
     } else {
       console.log("Tiempo antes de la solicitud:", this.recargaCache);
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=eur';
@@ -111,29 +110,6 @@ export class DetallesProductoComponent implements OnInit {
   }
 
   numeroUsuario: number = 0;
-
-  validarCantidad() : boolean {
-    if (this.numeroUsuario <= (this.convertedAmount / this.ethereumPrice) && this.numeroUsuario > this.producto.precioEthActual) {
-      return true;
-    } else if (this.numeroUsuario > this.convertedAmount) {
-      window.alert("No tienes suficientes fondos para realizar esta puja.");
-      return false;
-    } else {
-      window.alert("La cantidad introducida debe ser mayor que la puja actual.");
-      return false;
-    }
-  }
-
-  confirmarPuja(): void {
-    if (confirm(`¿Quieres pujar la cantidad de ${(this.numeroUsuario * this.ethereumPrice).toFixed(5)} EUR - ${(this.numeroUsuario).toFixed(5)} ETH?`)) {
-      this.pujar();
-    }
-  }
-
-  pujarConCantidadMinima() {
-    this.pujarConCantidadEspecifica(this.producto.precioEthActual + 0.0001);
-  }
-
   datosPuja = {
     monto: "",
     montoEUR: "",
@@ -141,11 +117,7 @@ export class DetallesProductoComponent implements OnInit {
     walletUsuario: this.stateService.getAccount()
   };
 
-  pujarConCantidadEspecifica(cantidad: number) {
-    this.numeroUsuario = cantidad;
-    this.confirmarPuja();
-  }
-
+ 
   tiempoRestante: string = '';
 
   calcularTiempoRestante(): void {
@@ -210,17 +182,7 @@ export class DetallesProductoComponent implements OnInit {
     this.producto.precioInicial = precioInicial;
   }
 
-  getPrecioActual(): number {
-    return this.producto.precioActual;
-  }
-
-  setPrecioActual(precioActual: number): void {
-    this.producto.precioActual = precioActual;
-  }
-
-  getFechaInicioSubasta(): string {
-    return this.producto.fechaInicioSubasta;
-  }
+ 
 
   setFechaInicioSubasta(fechaInicioSubasta: string): void {
     this.producto.fechaInicioSubasta = new Date(fechaInicioSubasta).toLocaleDateString() + " " + new Date(fechaInicioSubasta).toLocaleTimeString();
@@ -234,15 +196,6 @@ export class DetallesProductoComponent implements OnInit {
     this.producto.fechaFinalString = fechaFinalSubasta;
     this.producto.fechaFinalSubasta = new Date(fechaFinalSubasta).toLocaleDateString() + " " + new Date(fechaFinalSubasta).toLocaleTimeString();
   }
-
-  getEstadoSubasta(): string {
-    return this.producto.estadoSubasta;
-  }
-
-  setEstadoSubasta(estadoSubasta: string): void {
-    this.producto.estadoSubasta = estadoSubasta;
-  }
-
   getImagenProducto(): string {
     return this.producto.imagenProducto;
   }
@@ -264,7 +217,7 @@ export class DetallesProductoComponent implements OnInit {
   }
 
   setPrecioEthInicial(precioEth: number): void {
-    this.producto.precioEthInicial = precioEth / this.ethereumPrice;
+    this.producto.precioEthInicial = precioEth ;
   }
 
   getPrecioEthActual(): number {
@@ -272,7 +225,7 @@ export class DetallesProductoComponent implements OnInit {
   }
 
   setPrecioEthActual(precioEth: number): void {
-    this.producto.precioEthActual = precioEth  / this.ethereumPrice;
+    this.producto.precioEthActual = precioEth ;
   }
 
   getUltimaPuja(): string {
@@ -303,97 +256,12 @@ export class DetallesProductoComponent implements OnInit {
     this.setEstado(producto.estado);
     this.setCategoria(producto.categoria);
     this.setPrecioInicial(producto.precioInicial);
-    this.setPrecioActual(producto.precioActual);
     this.setFechaInicioSubasta(producto.fechaInicioSubasta);
     this.setFechaFinalSubasta(producto.fechaFinalSubasta);
-    this.setEstadoSubasta(producto.estadoSubasta);
     this.setImagenProducto(producto.imagenProducto);
     this.setPrecioEthInicial(producto.precioInicial);
     this.setPrecioEthActual(producto.precioActual);
     this.setUltimaPuja(producto.ultimaPuja);
-  }
-
-  async pujar() {
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-
-        const contractAddress = "0xB6c0D95bB2e5cbc53007e045D5Cd688146f45507";
-        const abi = ["function pujarPorProducto(uint256 idProducto, uint256 monto, uint256 montoEUR, uint256 saldo) public payable"];
-
-        const contract = new ethers.Contract(contractAddress, abi, signer);
-
-        // Establecemos el precio de la puja en ETH a 0.00001
-        const precioPuja = ethers.utils.parseEther('0.00001');
-
-        //Mostramos los datos de la puja
-        this.datosPuja.monto = this.numeroUsuario.toString();
-        this.datosPuja.idProducto = this.producto.id;
-        this.datosPuja.montoEUR = (this.numeroUsuario * this.ethereumPrice).toFixed(5).toString();
-
-        // Convertimos en bigNumber el valor de la puja
-        const puja = ethers.utils.parseEther(this.datosPuja.monto);
-
-        // Convertimos los EUR a Wei
-        const pujaEURWei = ethers.utils.parseEther(this.datosPuja.montoEUR);
-
-        console.log('Tratando de realizar la puja...');
-
-        try {
-          const transaction = await contract['pujarPorProducto'](
-            this.datosPuja.idProducto,
-            puja,
-            pujaEURWei,
-            provider.getBalance(this.stateService.getAccount()),
-            {
-              value: precioPuja,
-              from: this.stateService.getAccount()
-            }
-          );
-        
-          // Esperar tanto la transacción como su confirmación
-          const receipt = transaction.wait(6);
-
-          console.log('Transacción confirmada con éxito');
-
-            // Accede al hash de la transacción desde la propiedad "hash" del objeto transaction
-          const transactionHash = transaction.hash;
-        
-          // Ahora puedes usar el transactionHash como necesites (por ejemplo, imprimirlo o almacenarlo)
-          console.log('Hash de la transacción:', transactionHash);
-
-          if (this.validarCantidad()) {
-            console.log("Realizando puja...");
-            console.log("Monto: " + this.datosPuja.monto);
-            console.log("Monto en EUR: " + this.datosPuja.montoEUR);
-            console.log("Producto: " + this.datosPuja.idProducto);
-            console.log("Wallet: " + this.stateService.getAccount());
-            
-            // Llamada a la API para obtener los detalles del producto
-            this.http.post('/auction/pujar', this.datosPuja, { responseType: 'json' })
-            .subscribe({
-              next: response => {
-                console.log(response);
-                // Manejar la respuesta si es necesario
-              },
-              error: error => {
-                console.error('Error al realizar la puja:', error);
-                window.alert('Hubo un error al realizar la puja.');
-              }
-          });
-          } else {
-            console.log("Puja cancelada.");
-          }
-        } catch (error) {
-          console.error('Error al realizar la transacción:', error);
-        }
-      } catch (error) {
-        console.error('Error al realizar la puja:', error);
-      }
-    } else {
-      console.error('MetaMask u otra billetera no detectada');
-    }
   }
 
 }

@@ -15,6 +15,7 @@ import { SubastasComponent } from './subastas/subastas.component';
 import { ProductosComponent } from './productos/listado-productos/productos.component';
 import { DetallesProductoComponent } from './productos/detalles-producto/detalles-producto/detalles-producto.component';
 import  { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -29,7 +30,9 @@ const routes: Routes = [
   { path: 'subastas', component: SubastasComponent },
   { path: 'catalogo-productos', component: ProductosComponent },
   { path: 'detalles-producto/:id', component: DetallesProductoComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'cart', component: CartComponent },//navegacion al carrito
+
 ];
 
 @NgModule({
